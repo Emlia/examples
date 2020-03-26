@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path')
 module.exports = {
   chainWebpack: config => {
     config.module.rule('md')
@@ -10,5 +12,8 @@ module.exports = {
       .options({
         raw: true
       })
+
+    config.resolve.alias
+      .set('@note', path.join(__dirname, 'note'))
   }
 }

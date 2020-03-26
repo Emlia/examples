@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/rxjs',
+    name: 'rxjs',
+    component: () => import('@/views/rxjs/index.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
