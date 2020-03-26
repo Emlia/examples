@@ -1,5 +1,21 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <span>about</span>
+    <!-- <div v-html="code"></div> -->
+    <test-md></test-md>
   </div>
 </template>
+<script>
+import TestMd from './test.md'
+export default {
+  components: { TestMd },
+  data () {
+    return {
+    }
+  },
+  computed: {},
+  methods: {}
+}
+</script>
+<style scoped>
+</style>
