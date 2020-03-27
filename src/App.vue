@@ -5,7 +5,7 @@
 </template>
 <script>
 import hljs from 'highlight.js'
-import 'highlight.js/styles/rainbow.css'
+import 'highlight.js/styles/github.css'
 
 const highlightCode = () => {
   const preEl = document.querySelectorAll('pre')
@@ -48,6 +48,17 @@ a {
   }
   &:visited {
     color: #fff;
+  }
+}
+li {
+  margin: 10px 0;
+  & > code {
+    color: #c41d7f;
+    padding: 0.2em 0.4em;
+    font-size: 0.9em;
+    background: #f2f4f5;
+    border: 1px solid #eee;
+    border-radius: 3px;
   }
 }
 </style>

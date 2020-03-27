@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
+    <title>rxjs</title>
+  </head>
+
+  <body>
+    <script>
+      const dom = document.createElement("ul");
+      const body = document.documentElement.appendChild(dom);
+      console.log = function(msg) {
+        const li = document.createElement("li");
+        li.innerText = msg;
+        dom.appendChild(li);
+      };
+    </script>
+    <script>
+      const { generate } = rxjs;
+      const source$ = generate(
+        2, //初始值，相当于for循环中的i=2
+        value => value < 10, //继续的条件，相当于for中的条件判断
+        value => value + 2, //每次值的递增
+        value => `${value} -> ${value * value}` // 产生的结果
+      );
+      source$.subscribe(x => console.log(`next-${x}`));
+    </script>
+  </body>
+</html>

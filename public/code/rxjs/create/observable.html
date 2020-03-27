@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const dom = document.createElement("ul");
+      const body = document.documentElement.appendChild(dom);
+      console.log = function(msg) {
+        const li = document.createElement("li");
+        li.innerText = msg;
+        dom.appendChild(li);
+      };
+    </script>
+    <script>
+      const { Observable } = rxjs;
+      const onSubscribe = observer => {
+        observer.next(1);
+        observer.next(2);
+        observer.next(3);
+        observer.error("something wrong");
+        observer.next(4);
+        observer.complete();
+        return () => {
+          console.log("observer 结束");
+        };
+      };
+      const source$ = new Observable(onSubscribe);
+      // Subscribe with functions
+      source$.subscribe(
+        x => console.log("next-" + x),
+        err => console.log("error-" + err),
+        () => console.log("complete")
+      );
+      // Subscribe with an Observer
+      // const sumObserver = {
+      //   sum: 0,
+      //   next(value) {
+      //     console.log("Adding: " + value);
+      //     this.sum = this.sum + value;
+      //   },
+      //   error() {
+      //   },
+      //   complete() {
+      //     console.log("Sum equals: " + this.sum);
+      //   }
+      // };
+      // source$.subscribe(sumObserver)
+    </script>
+  </body>
+</html>
