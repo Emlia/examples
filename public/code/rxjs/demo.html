@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
+    <title>rxjs</title>
+  </head>
+
+  <body>
+    <script>
+      const dom = document.createElement("ul");
+      const body = document.documentElement.appendChild(dom);
+      console.log = function(msg) {
+        const li = document.createElement("li");
+        li.innerText = msg;
+        dom.appendChild(li);
+      };
+    </script>
+    <script>
+      const { of, fromEvent, interval, concat, range, merge, zip } = rxjs;
+      const {
+        repeatWhen,
+        delay,
+        take,
+        map,
+        tap,
+        concatAll,
+        mergeAll,
+        zipAll,
+        combineAll
+      } = rxjs.operators;
+
+      const source$ = interval(1000).pipe(
+        take(2),
+        map(x =>
+          interval(1500).pipe(
+            take(2),
+            map(y => x + ":" + y)
+          )
+        ),
+        combineAll()
+      );
+      source$.subscribe(x => console.log(JSON.stringify(x)));
+    </script>
+  </body>
+</html>

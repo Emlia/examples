@@ -60,5 +60,9 @@ li {
     border: 1px solid #eee;
     border-radius: 3px;
   }
+  &>img{
+    display: block;
+    width: 30%;
+  }
 }
 </style>
