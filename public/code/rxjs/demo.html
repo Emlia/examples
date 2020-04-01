@@ -46,11 +46,16 @@
         mapTo,
         isEmpty,
         defaultIfEmpty,
-        first
+        first,
+        concatMap,
+        mergeMap
       } = rxjs.operators;
 
-      const result = of(1, 2, 3, 4, 5, 6).pipe(first(x => x === 9, 99));
-      result.subscribe(x => console.log(JSON.stringify(x)));
+      // const letters = of("a", "b", "c");
+      // const result = letters.pipe(
+      //   mergeMap(x => interval(1000).pipe(map(i => x + i)))
+      // );
+      // result.subscribe(x => console.log(x));
     </script>
   </body>
 </html>

@@ -1,13 +1,12 @@
 <template>
   <div>
-    <rxjs></rxjs>
+    <git></git>
   </div>
 </template>
-
 <script>
-import Rxjs from '@note/rxjs/README.md'
+import git from '@note/git/index.md'
 export default {
-  components: { Rxjs },
+  components: { git },
   data () {
     return {}
   },
